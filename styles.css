@@ -6,10 +6,11 @@
   --border-color: #ddd;
   --soft-bg: rgba(0, 0, 0, 0.03);
   --top-bar-height: 60px;
+  --img_border_color: #000;
 }
 
 html {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 body.darkmode {
@@ -20,6 +21,7 @@ body.darkmode {
   --border-color: #444;       /* Dunklere Grenzen für subtile Abtrennung */
   --soft-bg: rgba(255, 255, 255, 0.05); /* Hellerer Transparenzeffekt für Darkmode */
   --top-bar-height: 60px;     /* Unverändert */
+  --img_border_color: #fff;
 }
 
 body {
@@ -67,7 +69,7 @@ body {
 
 .top-bar button:hover {
   background: var(--highlight-color);
-  color: #000;
+  color: var(--img_border_color);
   transform: scale(1.05);
 }
 
@@ -87,6 +89,86 @@ header {
 #front-page {
   height: calc(100vh - var(--top-bar-height));
 }
+
+.front-page-section {
+  display: flex;
+  align-items: center;
+  background: var(--soft-bg);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  scroll-snap-align: start;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+}
+
+.front-page-content {
+  display: flex;
+  width: 100%;
+}
+
+#front-page-beschreibung,
+#front-page-elemente {
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#front-page-beschreibung {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-content {
+  text-align: center;
+  margin: 10px;
+  background-color: var(--soft-bg);
+  border-radius: 10px;
+}
+
+.centered-content p {
+  font-size: 1.3rem;
+  white-space: normal;
+}
+
+.centered-content ul {
+  font-size: 1.3rem;
+  text-align: left;
+  margin-left: 20px; /* Leicht eingerückt */
+}
+
+#front-page-elemente {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#front-page-elemente section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.front-page-section img {
+  height: 25vh;
+  width: 80vh;
+  object-fit: contain;
+  margin-right: 20px;
+  background: var(--card-bg);
+  border-radius: 50%;
+}
+
+
+
+
+
+
 
 #langMenu {
   display: none;
@@ -224,30 +306,7 @@ nav {
   justify-content: center;
 }
 
-.front-page-section {
-  display: flex;
-  align-items: center;
-  background: var(--soft-bg);
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
-  scroll-snap-align: start;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ccc;
-}
-
-.front-page-section img {
-  height: 30vh;
-  width: 90vh;
-  object-fit: contain;
-  margin-right: 20px;
-  background: var(--card-bg);
-  border-radius: 50%;
-}
 
 .section {
   display: flex;
@@ -275,8 +334,27 @@ nav {
   border-radius: 10px;
 }
 
+.ueberschrift_beschreibung_element {
+  background-color: var(--bg-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.ueberschrift_beschreibung_ueberschrift {
+    font-size: 2rem;
+    text-align: left;
+    font-weight: bold;
+    width: 100%;
+}
+
+.ueberschrift_beschreibung_text {
+    text-align: center;
+    width: 100%;
+}
+
+
 .section .ueberschrift {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 0;
   font-weight: bold;
   letter-spacing: 1px;
@@ -294,10 +372,11 @@ nav {
 }
 
 .section .material_ueberschrift {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin: 0;
   font-weight: bold;
   letter-spacing: 1px;
+  text-decoration: underline;
 }
 
 .section .media-area {
@@ -336,7 +415,7 @@ nav {
 }
 
 .section .beschreibung p {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: var(--text-color);
   margin: 0;
   padding: 0;
@@ -436,7 +515,7 @@ p {
 
 .nav-button:hover {
   background: var(--highlight-color);
-  color: #000;
+  color: var(--img_border_color);
   transform: scale(1.1);
 }
 
@@ -515,8 +594,103 @@ p {
         }
 
         .definition_mat1_bpb_links_item:hover img {
-            border: 5px solid black;
+            border: 5px solid var(--img_border_color);
         }
 
+.matreial_bild_standart {
+  border-radius: 5px;
+  overflow: visible;
+  position: relative;
+  transition: transform 0.3s ease;
+} 
+
+.matreial_bild_standart img {
+  width: 100%;
+  object-fit: cover;
+  border: 5px solid transparent;
+  border-radius: 5px;
+  transition: border-color 0.5s ease;
+}
+
+.matreial_bild_standart:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+.matreial_bild_standart:hover img {
+    border: 5px solid var(--img_border_color);
+}
+
+#definition_mat2-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 20px;
+}
+
+.definition_mat2-image-container {
+    flex: 1.3; /* Erhöht den Platz für das Bild */
+    max-width: 30%; /* Erhöht die maximale Breite */
+    text-align: center;
+}
+
+.definition_mat2-links-container {
+    flex: 1;
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.definition_mat2 {
+    border-radius: 5px;
+    overflow: visible;
+    position: relative;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.definition_mat2 img {
+    width: 100%;
+    max-width: 500px; /* Setzt eine maximale Breite für das Bild */
+    height: auto; /* Behält das Seitenverhältnis bei */
+    object-fit: cover;
+    border: 5px solid transparent;
+    border-radius: 5px;
+    transition: border-color 0.5s ease;
+}
+
+.definition_mat2:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+.definition_mat2:hover img {
+    border: 5px solid var(--img_border_color);
+}
+
+.definition_mat2-links-container {
+  gap: 20px;
+}
+
+.definition_mat2-links-container a {
+    display: block;
+    padding: 10px;
+    background-color: var(--soft-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1.5rem;
+    font-weight: bold; /* Macht die Schrift fett */
+}
+
+
+.definition_mat2-links-container a:hover {
+    background-color: var(--card-bg);
+    border: 5px solid var(--img_border_color);
+} 
 
 
